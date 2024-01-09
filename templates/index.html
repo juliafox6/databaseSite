@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang='en-EN'>
+
+<head>
+  
+  <title>Главная</title>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='../static/styles.css' rel='stylesheet'>
+  <link href='../static/src/icon.png' rel='icon' type='image/x-icon'>
+
+</head>
+
+<body>
+
+  <div class='wrapper'>
+  <header>
+      <img src='../static/src/logo.png' alt='Логотип'>
+      <h1>TryAngle</h1>
+  </header>
+
+  <nav>
+      <a>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      {% if not current_user %}
+      <a href='login.html' title='Войти'>Войти</a>
+      <a href='signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if current_user %}
+      <a href='profile.html' title='Профиль'>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+      {% endif %}
+  </nav>
+  
+  <main>
+    <div class='ad'>
+      <p class='close' onclick='hideAd()'>x</p>
+      <h3>Посетите наши курсы</h3>
+      <img src='../static/src/ad.png' alt='Курсы'>
+      <p>Только сейчас они доступны совершенно бесплатно!</p>
+      <a href='https://skillbox.ru/' title='Курсы' target='_blank'><p class='button'>Посетить</p></a>
+    </div>
+    <div class='up up_hide'>
+      <p>^</p>
+    </div>
+    <div class='section'>
+      <div class='left'>
+        <h2>Дизайнерская биржа<br>TryAngle</h2>
+        <p>Здравствуйте!</p>
+        <p>Мы&nbsp;&ndash; современная платформа, помогающая графическим дизайнерам найти их заказы, а потенциальным заказчикам&nbsp;&ndash; найти дизайнера их мечты. Зарегистрируйся уже сейчас в качестве исполнителя или заказчика!</p>
+        <br>
+        <h3>Основная тематика заказов:</h3>
+        <ul>
+          <li>разработка фирменного стиля</li>
+          <li>создание логотипа</li>
+          <li>разработка типографики</li>
+          <li>UI/UX дизайн</li>
+          <li>прототипы сайтов на Figma</li>
+          <li>web-дизайн</li>
+        </ul>
+      </div>
+      <div class='line'>
+        <br>
+        <p>Мы можем гарантировать, что в конечном результате вы получите дизайн вашей мечты!</p>
+        <br>
+        <img src='../static/src/illustration1.png' alt='Иллюстрация 1'>
+        <br>
+      </div>
+    </div>
+    <h2 class='outer-header'>Как заказать работу?</h2>
+    <div class='section'>
+      <div class='card'>
+        <img src='../static/src/icon_card1.png' alt='Этап 1'>
+        <p>Этап 1. Вы выбираете подходящую услугу у исполнителя или выкладываете свой заказ</p>
+      </div>
+      <div class='card'>
+        <img src='../static/src/icon_card2.png' alt='Этап 2'>
+        <p>Этап 2. Исполнитель принимает ваш заказ, и далее обсуждаются детали заказа</p>
+      </div>
+      <div class='card'>
+        <img src='../static/src/icon_card3.png' alt='Этап 3'>
+        <p>Этап 3. С помощью функции личной переписки вы можете обсуждать правки и общаться</p>
+      </div>
+      <div class='card'>
+        <img src='../static/src/icon_card4.png' alt='Этап 4'>
+        <p>Этап 4. Исполнитель выполняет работу в соответствии с Вашими требованиями</p>
+      </div>
+      <div class='card'>
+        <img src='../static/src/icon_card5.png' alt='Этап 5'>
+        <p>Этап 5. После всех правок исполнитель предоставлеяет Вам готовый продукт</p>
+      </div>
+      <div class='card'>
+        <img src='../static/src/icon_card6.png' alt='Этап 6'>
+        <p>Этап 6. Выполненная работа выкладывается исполнителем в его онлайн-портфолио</p>
+      </div>
+    </div>
+    <h2 class='outer-header'>Подробная информация</h2>
+    <div class='section last'>
+      <div class='left'>
+        <a href='artists.html'><div class='card'>
+          <p>Исполнители заказов</p>
+        </div></a>
+        <a href='completes.html'><div class='card'>
+          <p>Проекты и кейсы</p>
+        </div></a>
+        <a href='requests.html'><div class='card'>
+          <p>Доступные заказы</p>
+        </div></a>
+        <a href='login.html'><div class='card'>
+          <p>Вход в систему</p>
+        </div></a>
+      </div>
+      <div class='line'>
+        <br>
+        <p>Вас заинтересовали наши услуги? Вы можете ознакомиться с более подробной информацией в других разделах нашего сайта! Мы будем рады плодотворному сотрудничеству и новым деловым предложениям. Не стесняйтесь высказать нам любые идеи и вступайте в наше сообщество!</p>
+        <br>
+      </div>
+    </div>
+  </main>
+  
+  <div class='footer'>
+    <div><p>TryAngle &#169 All rights reserved</p></div>
+    <div>
+      <a>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      {% if not current_user %}
+      <a href='login.html' title='Войти'>Войти</a>
+      <a href='signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if current_user %}
+      <a href='profile.html' title='Профиль'>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+  <script src='../static/scripts.js'></script>
+  
+</body>
+
+</html>

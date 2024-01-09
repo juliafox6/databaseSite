@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang='en-EN'>
+
+<head>
+
+  <title>Регистрация</title>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='../static/styles.css' rel='stylesheet'>
+  <link href='../static/src/icon.png' rel='icon' type='image/x-icon'>
+
+</head>
+
+<body>
+
+  <div class='wrapper'>
+  <header>
+      <h1>Регистрация</h1>
+  </header>
+
+  <nav>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      <a href='login.html' title='Войти'>Войти</a>
+      <a>Регистрация</a>
+  </nav>
+
+  <main>
+    <div class='ad'>
+      <p class='close' onclick='hideAd()'>x</p>
+      <h3>Посетите наши курсы</h3>
+      <img src='../static/src/ad.png' alt='Курсы'>
+      <p>Только сейчас они доступны совершенно бесплатно!</p>
+      <a href='https://skillbox.ru/' title='Курсы'><p class='button'>Посетить</p></a>
+    </div>
+    <div class='up up_hide'>
+      <p>^</p>
+    </div>
+    <div class='section center last'>
+      <div class='center'>
+        <h2>Регистрация</h2>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification">
+                {{ messages[0] }}.
+            </div>
+        {% endif %}
+        {% endwith %}
+        <div class='notification1 up_hide'>
+          Не все обязательные поля заполнены
+        </div>
+        <form method='post'>
+          <label for='surname'>*Фамилия:</label>
+          <input id='surname' type='text' name='surname' />
+          <label for='name'>*Имя:</label>
+          <input id='name' type='text' name='name' />
+          <label for='email'>*E-mail адрес:</label>
+          <input id='email' type='email' name='email' />
+          <label for='password' class='pass1'>*Пароль:</label>
+          <input id='password' type='password' name='password' onchange='checkPassword()' />
+          <label for='repeat' class='pass2'>*Повторите пароль:</label>
+          <input id='repeat' type='password' name='repeat' onchange='checkPassword()' />
+          <p class='error up_hide'>Пароли не совпадают!</p>
+          <label for='phone'>*Номер телефона:</label>
+          <input id='phone' type='tel' name='phone' />
+          <p>*Выберите статус:</p>
+          <div class='radios'>
+            <input id='artist' type='radio' name='occupation' value='artist' class='artist' /><label for='artist'>Исполнитель</label>
+            <input id='customer' type='radio' name='occupation' value='customer' class='customer' /><label for='customer'>Заказчик</label>
+          </div>
+          <div class='addits_artist up_hide'>
+            <label for='specialization'>Специализация:</label>
+            <input id='specialization' type='text' name='specialization' />
+            <label for='exp'>Опыт работы (в годах):</label>
+            <input id='exp' type='number' min='0' max='70' name='exp' />
+          </div>
+          <div class='addits_customer up_hide'>
+            <label for='company'>Компания:</label>
+            <input id='company' type='text' name='company' />
+            <label for='sphere'>Сфера деятельности:</label>
+            <input id='sphere' type='text' name='sphere' />
+          </div>
+          <label for='about'>*Расскажите о себе:</label>
+          <textarea id='about' name='about'></textarea>
+          <input type='submit' value='Зарегистрироваться' class='button_login' onclick='checkFields()'>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <div class='footer'>
+    <div><p>TryAngle &#169 All rights reserved</p></div>
+    <div>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      <a href='login.html' title='Войти'>Войти</a>
+      <a>Регистрация</a>
+    </div>
+  </div>
+  </div>
+  <script src='../static/scripts.js'></script>
+
+</body>
+
+</html>

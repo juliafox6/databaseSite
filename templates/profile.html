@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang='en-EN'>
+
+<head>
+
+  <title>Профиль {{current_user.surname}} {{current_user.name}}</title>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='../static/styles.css' rel='stylesheet'>
+  <link href='../static/src/icon.png' rel='icon' type='image/x-icon'>
+
+</head>
+
+<body>
+
+  <div class='wrapper'>
+  <header>
+      <h1>Профиль {{current_user.surname}} {{current_user.name}}</h1>
+  </header>
+
+  <nav>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      <a>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+  </nav>
+
+  <main>
+    <div class='ad'>
+      <p class='close' onclick='hideAd()'>x</p>
+      <h3>Посетите наши курсы</h3>
+      <img src='../static/src/ad.png' alt='Курсы'>
+      <p>Только сейчас они доступны совершенно бесплатно!</p>
+      <a href='https://skillbox.ru/' title='Курсы'><p class='button'>Посетить</p></a>
+    </div>
+    <div class='up up_hide'>
+      <p>^</p>
+    </div>
+    <div class='section'>
+      <div class='left'>
+        {% if current_user.isartist == True %}
+        <p>Специализация: {{current_user.artist_specialization}}</p>
+        <p>Опыт работы: {{current_user.artist_exp}}</p>
+        {% endif %}
+        {% if current_user.isartist == False %}
+        <p>Компания: {{current_user.customer_company}}</p>
+        <p>Сфера работы: {{current_user.customer_sphere}}</p>
+        {% endif %}
+        <p>Телефон: {{current_user.phone}}</p>
+        <p>О себе: {{current_user.about}}</p>
+      </div>
+      <div class='line'>
+        <br>
+        <h2>{{current_user.name}} {{current_user.surname}}</h2>
+        <img src='../static/src/member_icon2.png' alt='Исполнитель' class='boss'>
+        <br>
+        <a href='completes.html'><div class='card'>В ленту</div></a>
+      </div>
+    </div>
+    <h2 class='outer-header'>Работы в процессе</h2>
+    <div class='section center'>
+      <div class='center'>
+        {% for el in requests %}
+        <a href='requests.html/{{el.id}}' title='Кейс {{el.id}}'><div class='card boss'>
+          <h3>{{el.name}}</h3>
+          <p>Срок выполнения: {{el.number}}</p>
+          <p>{% if current_user.isartist %}
+            Заказчик:
+            {% for i in users %}
+              {% if el.customer == i.id %}
+                {{i.surname}} {{i.name}}
+              {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% if not current_user.isartist %}
+            Автор:
+            {% for i in users %}
+              {% if el.artist == i.id %}
+                {{i.surname}} {{i.name}}
+              {% endif %}
+            {% endfor %}
+            {% endif %}
+          </p>
+          <p>{{el.about}}</p>
+        </div></a>
+        {% endfor %}
+      </div>
+    </div>
+    <h2 class='outer-header'>Выполненные работы</h2>
+    <div class='section center last'>
+      <div class='center'>
+      {% for el in works %}
+        <a href='completes.html/{{el.id}}' title='Работа {{el.id}}'><div class='card boss'>
+          <img src='{{el.url}}' alt='Кейс {{el.id}}'>
+          <h3>{{el.name}}</h3>
+          <p>{% if current_user.isartist %}
+            Заказчик:
+            {% for i in users %}
+              {% if el.customer == i.id %}
+                {{i.surname}} {{i.name}}
+              {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% if not current_user.isartist %}
+            Автор:
+            {% for i in users %}
+              {% if el.artist == i.id %}
+                {{i.surname}} {{i.name}}
+              {% endif %}
+            {% endfor %}
+            {% endif %}
+          </p>
+          <p>{{el.about}}</p>
+        </div></a>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+
+  <div class='footer'>
+    <div><p>TryAngle &#169 All rights reserved</p></div>
+    <div>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      <a>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+    </div>
+  </div>
+  </div>
+  <script src='../static/scripts.js'></script>
+
+</body>
+
+</html>

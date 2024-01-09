@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang='en-EN'>
+
+<head>
+
+  <title>Работа</title>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='../static/styles.css' rel='stylesheet'>
+  <link href='../static/src/icon.png' rel='icon' type='image/x-icon'>
+
+</head>
+
+<body>
+
+  <div class='wrapper'>
+  <header>
+      <h1>Работа</h1>
+  </header>
+
+  <nav>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='/artists.html' title='Исполнители'>Исполнители</a>
+      <a href='/completes.html' title='Работы'>Работы</a>
+      <a href='/requests.html' title='Заказы'>Заказы</a>
+      {% if not authenticated %}
+      <a href='/login.html' title='Войти'>Войти</a>
+      <a href='/signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if authenticated %}
+      <a href='/profile.html' title='Профиль'>Профиль</a>
+      <a href='/logout.html' title='Выход'>Выход</a>
+      {% endif %}
+  </nav>
+
+  <main>
+    <div class='ad'>
+      <p class='close' onclick='hideAd()'>x</p>
+      <h3>Посетите наши курсы</h3>
+      <img src='../static/src/ad.png' alt='Курсы'>
+      <p>Только сейчас они доступны совершенно бесплатно!</p>
+      <a href='https://skillbox.ru/' title='Курсы'><p class='button'>Посетить</p></a>
+    </div>
+    <div class='up up_hide'>
+      <p>^</p>
+    </div>
+    <div class='section last'>
+      <div style='text-align: center'>
+        <img src='{{work.url}}' alt='Кейс 1'>
+      </div>
+      <div class='line'>
+        <br>
+        <h2>{{work.name}}</h2>
+        <p>Дата выполнения: {{work.date}}</p>
+        <p>Автор:
+            {% for i in users %}
+              {% if work.artist == i.id %}
+                {{i.surname}} {{i.name}}
+              {% endif %}
+            {% endfor %}
+        </p>
+        <p>Заказчик:
+            {% for i in users %}
+              {% if work.customer == i.id %}
+                {{i.surname}} {{i.name}}
+              {% endif %}
+            {% endfor %}
+        </p>
+        <p>{{work.about}}</p>
+        <br>
+        <a href='/completes.html'><div class='card'>В ленту</div></a>
+      </div>
+    </div>
+  </main>
+
+  <div class='footer'>
+    <div><p>TryAngle &#169 All rights reserved</p></div>
+    <div>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='/artists.html' title='Исполнители'>Исполнители</a>
+      <a href='/completes.html' title='Работы'>Работы</a>
+      <a href='/requests.html' title='Заказы'>Заказы</a>
+      {% if not authenticated %}
+      <a href='/login.html' title='Войти'>Войти</a>
+      <a href='/signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if authenticated %}
+      <a href='/profile.html' title='Профиль'>Профиль</a>
+      <a href='/logout.html' title='Выход'>Выход</a>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+  <script src='../static/scripts.js'></script>
+
+</body>
+
+</html>

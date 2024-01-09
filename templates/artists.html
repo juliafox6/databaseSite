@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang='en-EN'>
+
+<head>
+
+  <title>Исполнители</title>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='../static/styles.css' rel='stylesheet'>
+  <link href='../static/src/icon.png' rel='icon' type='image/x-icon'>
+
+</head>
+
+<body>
+  
+  <div class='wrapper'>
+  <header>
+      <h1>Исполнители</h1>
+  </header>
+
+  <nav>
+      <a href='/' title='Главная'>Главная</a>
+      <a>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      {% if not current_user %}
+      <a href='login.html' title='Войти'>Войти</a>
+      <a href='signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if current_user %}
+      <a href='profile.html' title='Профиль'>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+      {% endif %}
+  </nav>
+
+  <main>
+  <div class='ad'>
+      <p class='close' onclick='hideAd()'>x</p>
+      <h3>Посетите наши курсы</h3>
+      <img src='../static/src/ad.png' alt='Курсы'>
+      <p>Только сейчас они доступны совершенно бесплатно!</p>
+      <a href='https://skillbox.ru/' title='Курсы'><p class='button'>Посетить</p></a>
+    </div>
+    <div class='up up_hide'>
+      <p>^</p>
+    </div>
+    <div class='section center'>
+      <div class='center'>
+        <br>
+        <h2>Профили исполнителей</h2>
+        <p>Здесь заказчики могут найти профили исполнителей, просмотреть их портфолио и выбрать того дизайнера, с которым хотели бы сотрудничать. В сферу деятельности наших соискателей входит работа над проектами следующего типа:</p>
+        <br>
+      </div>
+      <div class='center'>
+        <div class='card small'>
+          <img src='../static/src/about_icon1.png' alt='WEB-дизайн'>
+          <p>Веб-дизайн</p>
+        </div>
+        <div class='card small'>
+          <img src='../static/src/about_icon2.png' alt='Инфографика'>
+          <p>Графика</p>
+        </div>
+        <div class='card small'>
+          <img src='../static/src/about_icon3.png' alt='Типография'>
+          <p>Типография</p>
+        </div>
+        <div class='card small'>
+          <img src='../static/src/about_icon4.png' alt='Фирменный стиль'>
+          <p>Брендинг</p>
+        </div>
+        <div class='card small'>
+          <img src='../static/src/about_icon5.png' alt='UI/UX'>
+          <p>UI/UX дизайн</p>
+        </div>
+        <div class='card small'>
+          <img src='../static/src/about_icon6.png' alt='Продукция'>
+          <p>Дизайн упаковки</p>
+        </div>
+      </div>
+    </div>
+    <h2 class='outer-header'>Исполнители</h2>
+    <div class='section last'>
+      <div class='center'>
+        {% for el in users %}
+        <a href='artists.html/{{el.id}}' title='Исполнитель {{el.id}}'><div class='card member'>
+          <img src='../static/src/member_icon2.png' alt='Дизайнер'>
+          <h3>{{el.surname}} {{el.name}}</h3>
+          <p>{{el.about}}</p>
+          <p>Специализация: {{el.artist_specialization}}</p>
+          <p>Опыт работы: {{el.artist_exp}}</p>
+          <p>Телефон: {{el.phone}}</p>
+        </div></a>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+
+  <div class='footer'>
+    <div><p>TryAngle &#169 All rights reserved</p></div>
+    <div>
+      <a href='/' title='Главная'>Главная</a>
+      <a>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      {% if not current_user %}
+      <a href='login.html' title='Войти'>Войти</a>
+      <a href='signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if current_user %}
+      <a href='profile.html' title='Профиль'>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+  <script src='../static/scripts.js'></script>
+  
+</body>
+
+</html>

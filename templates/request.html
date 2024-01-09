@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en-EN'>
+
+<head>
+
+  <title>Заказ</title>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='../static/styles.css' rel='stylesheet'>
+  <link href='../static/src/icon.png' rel='icon' type='image/x-icon'>
+
+</head>
+
+<body>
+
+  <div class='wrapper'>
+  <header>
+      <h1>Заказ</h1>
+  </header>
+
+  <nav>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='/artists.html' title='Исполнители'>Исполнители</a>
+      <a href='/completes.html' title='Работы'>Работы</a>
+      <a href='/requests.html' title='Заказы'>Заказы</a>
+      {% if not authenticated %}
+      <a href='/login.html' title='Войти'>Войти</a>
+      <a href='/signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if authenticated %}
+      <a href='/profile.html' title='Профиль'>Профиль</a>
+      <a href='/logout.html' title='Выход'>Выход</a>
+      {% endif %}
+  </nav>
+
+  <main>
+    <div class='ad'>
+      <p class='close' onclick='hideAd()'>x</p>
+      <h3>Посетите наши курсы</h3>
+      <img src='../static/src/ad.png' alt='Курсы'>
+      <p>Только сейчас они доступны совершенно бесплатно!</p>
+      <a href='https://skillbox.ru/' title='Курсы'><p class='button'>Посетить</p></a>
+    </div>
+    <div class='up up_hide'>
+      <p>^</p>
+    </div>
+    <div class='section last'>
+      <div class='left'>
+        <h2>{{requestik.name}}</h2>
+        <p>Срок выполнения: {{requestik.number}}</p>
+        <p>Заказчик:
+            {% for i in users %}
+              {% if requestik.customer == i.id %}
+                {{i.surname}} {{i.name}}
+              {% endif %}
+            {% endfor %}
+        </p>
+        <p>Автор:
+            {% for i in users %}
+              {% if requestik.artist == i.id %}
+                {{i.surname}} {{i.name}}
+              {% endif %}
+            {% endfor %}
+        </p>
+        {% if authenticated %}
+        {% if current_user.isartist %}
+          {% if not requestik.artist %}
+          <form method='post'>
+            <input type='submit' value='Взять заказ' class='button_login'>
+          </form>
+          {% endif %}
+        {% endif %}
+        {% endif %}
+      </div>
+      <div class='line'>
+        <p>Техническое задание:</p>
+        <p>{{requestik.about}}</p>
+        <a href='/requests.html'><div class='card'>В ленту</div></a>
+      </div>
+    </div>
+  </main>
+
+  <div class='footer'>
+    <div><p>TryAngle &#169 All rights reserved</p></div>
+    <div>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='/artists.html' title='Исполнители'>Исполнители</a>
+      <a href='/completes.html' title='Работы'>Работы</a>
+      <a href='/requests.html' title='Заказы'>Заказы</a>
+      {% if not authenticated %}
+      <a href='/login.html' title='Войти'>Войти</a>
+      <a href='/signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if authenticated %}
+      <a href='/profile.html' title='Профиль'>Профиль</a>
+      <a href='/logout.html' title='Выход'>Выход</a>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+  <script src='../static/scripts.js'></script>
+
+</body>
+
+</html>

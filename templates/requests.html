@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang='en-EN'>
+
+<head>
+
+  <title>Заказы</title>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='../static/styles.css' rel='stylesheet'>
+  <link href='../static/src/icon.png' rel='icon' type='image/x-icon'>
+
+</head>
+
+<body>
+
+  <div class='wrapper'>
+  <header>
+      <h1>Заказы</h1>
+  </header>
+
+  <nav>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a>Заказы</a>
+      {% if not authenticated %}
+      <a href='login.html' title='Войти'>Войти</a>
+      <a href='signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if authenticated %}
+      <a href='profile.html' title='Профиль'>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+      {% endif %}
+  </nav>
+
+  <main>
+    <div class='ad'>
+      <p class='close' onclick='hideAd()'>x</p>
+      <h3>Посетите наши курсы</h3>
+      <img src='../static/src/ad.png' alt='Курсы'>
+      <p>Только сейчас они доступны совершенно бесплатно!</p>
+      <a href='https://skillbox.ru/' title='Курсы'><p class='button'>Посетить</p></a>
+    </div>
+    <div class='up up_hide'>
+      <p>^</p>
+    </div>
+    <div class='section center'>
+      <div class='center'>
+        <br>
+        <h2>Заказы</h2>
+        <p>В данном разделе выложены задания от заказчиков. Любой желающий исполнитель может посмотреть список данных заказов и выбрать работу, которую хотел бы выполнить, после чего он может связаться с заказчиком и предложить свои услуги дизайнера!</p>
+        <br>
+        {% if authenticated %}
+        {% if current_user.isartist == False %}
+        <a href='post_request.html' title='Выложить заказ' class='card'>Выложить заказ</a>
+        {% endif %}
+        {% endif %}
+      </div>
+    </div>
+    <h2 class='outer-header'>Лента заказов</h2>
+    <div class='section center last'>
+      <div class='center'>
+        {% for el in requests %}
+        <a href='requests.html/{{el.id}}' title='Кейс {{el.id}}'><div class='card boss'>
+          <h3>{{el.name}}</h3>
+          <p>Срок выполнения: {{el.number}}</p>
+          <p>Автор:
+            {% for i in authors %}
+              {% if el.artist == i.id %}
+                {{i.surname}} {{i.name}}
+              {% endif %}
+            {% endfor %}
+          </p>
+          <p>{{el.about}}</p>
+        </div></a>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+
+  <div class='footer'>
+    <div><p>TryAngle &#169 All rights reserved</p></div>
+    <div>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a>Заказы</a>
+      {% if not authenticated %}
+      <a href='login.html' title='Войти'>Войти</a>
+      <a href='signup.html' title='Регистрация'>Регистрация</a>
+      {% endif %}
+      {% if authenticated %}
+      <a href='profile.html' title='Профиль'>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+      {% endif %}
+    </div>
+  </div>
+  </div>
+  <script src='../static/scripts.js'></script>
+  
+</body>
+
+</html>

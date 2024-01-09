@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='en-EN'>
+
+<head>
+
+  <title>Публикация работы</title>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='../static/styles.css' rel='stylesheet'>
+  <link href='../static/src/icon.png' rel='icon' type='image/x-icon'>
+
+</head>
+
+<body>
+
+  <div class='wrapper'>
+  <header>
+      <h1>Публикация работы</h1>
+  </header>
+
+  <nav>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      <a href='profile.html' title='Профиль'>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+  </nav>
+
+  <main>
+    <div class='ad'>
+      <p class='close' onclick='hideAd()'>x</p>
+      <h3>Посетите наши курсы</h3>
+      <img src='../static/src/ad.png' alt='Курсы'>
+      <p>Только сейчас они доступны совершенно бесплатно!</p>
+      <a href='https://skillbox.ru/' title='Курсы'><p class='button'>Посетить</p></a>
+    </div>
+    <div class='up up_hide'>
+      <p>^</p>
+    </div>
+    <div class='section last'>
+      <div class='center'>
+        <h2>Опубликовать</h2>
+        <form method='post'>
+          <label for='choose'>Выберите работу:</label>
+          <select id='choose' name='choose'>
+            {% for el in requests %}
+            <option value={{el.id}}>{{el.name}}</option>
+            {% endfor %}
+          </select>
+          <label for='link'>Ссылка на изображение работы:</label>
+          <input id='link' type='url' name='link' />
+          <input type='submit' value='Опубликовать' class='button_login'>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <div class='footer'>
+    <div><p>TryAngle &#169 All rights reserved</p></div>
+    <div>
+      <a href='/' title='Главная'>Главная</a>
+      <a href='artists.html' title='Исполнители'>Исполнители</a>
+      <a href='completes.html' title='Работы'>Работы</a>
+      <a href='requests.html' title='Заказы'>Заказы</a>
+      <a href='profile.html' title='Профиль'>Профиль</a>
+      <a href='logout.html' title='Выход'>Выход</a>
+    </div>
+  </div>
+  </div>
+  <script src='../static/scripts.js'></script>
+
+</body>
+
+</html>
